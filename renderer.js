@@ -5,7 +5,7 @@ function updateCounter(text) {
 	document.getElementById('counter').textContent = `${n} caractères`
 }
 
-mainwindow.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
 	const editor = document.getElementById('editor')
 	const openBtn = document.getElementById('openBtn')
 	const saveBtn = document.getElementById('saveBtn')
@@ -20,22 +20,22 @@ mainwindow.addEventListener('DOMContentLoaded', () => {
 	})
 
 	openBtn.addEventListener('click', async () => {
-		const res = await mainwindow.api.openFile()
+		const res = await window.api.openFile()
 		if (!res || res.canceled) return
 		currentPath = res.filePath
 		editor.value = res.content
 		updateCounter(editor.value)
 	})
 
-	saveBtn.addEventListener('click', async () => {
-		const content = editor.value
-		const res = await mainwindow.api.saveFile(content, currentPath)
+		saveBtn.addEventListener('click', async () => {
+			const content = editor.value
+			const res = await window.api.saveFile(content, currentPath)
 		if (!res || res.canceled) return
 		currentPath = res.filePath
 	})
 
-	newBtn.addEventListener('click', async () => {
-		await mainwindow.api.newFile()
+		newBtn.addEventListener('click', async () => {
+			await window.api.newFile()
 		currentPath = null
 		editor.value = ''
 		updateCounter('')
@@ -62,28 +62,34 @@ mainwindow.addEventListener('DOMContentLoaded', () => {
 	}
 
 
-	mainwindow.api.onFileOpened((data) => {
+	window.api.onFileOpened((data) => {
 		if (!data) return
 		currentPath = data.filePath
 		editor.value = data.content
 		updateCounter(editor.value)
 	})
 
-	mainwindow.api.onFileSaved((data) => {
+	window.api.onFileSaved((data) => {
 		if (!data) return
 		currentPath = data.filePath
 	})
 
-	mainwindow.api.onFileNew(() => {
+	window.api.onFileNew(() => {
 		currentPath = null
 		editor.value = ''
 		updateCounter('')
 	})
 
-	mainwindow.api.onMenuSave(async () => {
+	window.api.onMenuSave(async () => {
 		const content = editor.value
-		const res = await mainwindow.api.saveFile(content, currentPath)
+		const res = await window.api.saveFile(content, currentPath)
 		if (!res || res.canceled) return
 		currentPath = res.filePath
 	})
+
+	editor.addEventListener('input', () => {
+  const n = editor.value.length;
+  // Gestion du singulier/pluriel : "1 caractère" vs "2 caractères"
+  statusbar.textContent = `${n} caractère${n > 1 ? 's' : ''}`;
+	});
 })
