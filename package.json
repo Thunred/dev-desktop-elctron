@@ -1,7 +1,7 @@
 {
   "name": "dev-desktop-elctron",
   "version": "1.0.0",
-  "description": "",
+  "description": "Development desktop Electron app",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -19,7 +19,7 @@
     "url": "https://github.com/Thunred/dev-desktop-elctron/issues"
   },
   "homepage": "https://github.com/Thunred/dev-desktop-elctron#readme",
-  "dependencies": {
+  "devDependencies": {
     "electron": "^41.0.0"
   }
 }
