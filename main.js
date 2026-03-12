@@ -85,7 +85,7 @@ app.whenReady().then(() => {
 
 app.on('window-all-closed', () => { if (process.platform !== 'darwin') app.quit() })
 
-// IPC handlers
+
 ipcMain.handle('file:open', async () => {
   return await openFileFromDialog()
 })
@@ -100,7 +100,7 @@ ipcMain.handle('file:new', async () => {
   return { ok: true }
 })
 
-// Allow renderer to request read/write by path
+
 ipcMain.handle('file:read', async (event, filePath) => {
   const content = await fs.readFile(filePath, 'utf8')
   currentFilePath = filePath

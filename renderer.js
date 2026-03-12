@@ -49,7 +49,6 @@ window.addEventListener('DOMContentLoaded', () => {
 		if (themeBtn) themeBtn.textContent = theme === 'light' ? 'Mode sombre' : 'Mode clair'
 	}
 
-	// init theme from localStorage
 	const savedTheme = localStorage.getItem('theme') || 'dark'
 	applyTheme(savedTheme)
 
