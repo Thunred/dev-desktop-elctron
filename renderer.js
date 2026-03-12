@@ -1,8 +1,8 @@
 let currentPath = null
 
 function updateCounter(text) {
-	const n = text.length
-	document.getElementById('counter').textContent = `${n} caractères`
+	const n = (typeof text === 'number') ? text : text.length
+	document.getElementById('counter').textContent = `${n} caractère${n > 1 ? 's' : ''}`
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -42,10 +42,9 @@ window.addEventListener('DOMContentLoaded', () => {
 		editor.focus()
 	})
 
-	// Theme handling (basic: stores choice in localStorage)
 	function applyTheme(theme) {
-		if (theme === 'light') document.body.classList.add('light')
-		else document.body.classList.remove('light')
+		if (theme === 'light') document.body.setAttribute('data-theme', 'light')
+		else document.body.removeAttribute('data-theme')
 		if (themeBtn) themeBtn.textContent = theme === 'light' ? 'Mode sombre' : 'Mode clair'
 	}
 
@@ -86,9 +85,5 @@ window.addEventListener('DOMContentLoaded', () => {
 		currentPath = res.filePath
 	})
 
-	editor.addEventListener('input', () => {
-  const n = editor.value.length;
-  // Gestion du singulier/pluriel : "1 caractère" vs "2 caractères"
-  statusbar.textContent = `${n} caractère${n > 1 ? 's' : ''}`;
-	});
+	// editor input already updates the counter via updateCounter above
 })
