@@ -1,0 +1,56 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+out/
+release/
+
+# Electron
+*.asar
+*.asar.unpack
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Caches, coverage
+.cache/
+coverage/
+
+# Keys, certificates
+*.pem
+*.p12
+*.pfx
+
+# Package manager caches
+.parcel-cache/
+.webpack/
+
+# Misc
+*.exe
+*.AppImage
+*.dmg
+*.deb
+*.rpm
+*.msi
+package-lock.json

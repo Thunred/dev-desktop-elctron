@@ -1,0 +1,24 @@
+{
+  "name": "dev-desktop-elctron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thunred/dev-desktop-elctron.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Thunred/dev-desktop-elctron/issues"
+  },
+  "homepage": "https://github.com/Thunred/dev-desktop-elctron#readme",
+  "dependencies": {
+    "electron": "^41.0.0"
+  }
+}
